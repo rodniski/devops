@@ -1,34 +1,28 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-job:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - run: python3 -V
 
-      - name: Install dependencies
-        run: npm install
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: python3 app.py
 
-      - name: Run tests
-        run: npm test
-
-      # Adicione o estágio de SAST aqui
-      - name: Static Application Security Testing (SAST)
-        # Adicione a ação ou script para executar o teste de segurança estática
-        # Exemplo usando uma ação de terceiros para o SAST com o CodeQL
-        uses: github/codeql-action@v2
-        with:
-          # Configure o caminho para o código-fonte a ser analisado
-          # Por padrão, a ação analisará todo o código-fonte no diretório do repositório
-          # Mas você pode ajustar isso conforme necessário
-          sources: .
-        # Adicione outros parâmetros conforme necessário, como configurações específicas de análise, etc.
-      
-      # Adicione outros estágios do pipeline, como implantação, se necessário
+  deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Finalizado!"
