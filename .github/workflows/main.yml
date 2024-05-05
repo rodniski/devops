@@ -17,6 +17,6 @@ jobs:
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://localhost:9000  
+          SONAR_HOST_URL: https://172.17.0.1:9000  
           SONAR_LOGIN: grcorreia98@gmail.com # Adicione esta linha com o secret que contém o login do SonarQube
           SONAR_PASSWORD: admin  # Adicione esta linha com o secret que contém a senha do SonarQube
