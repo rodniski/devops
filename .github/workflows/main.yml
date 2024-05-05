@@ -13,14 +13,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Set up Java
-      uses: actions/setup-java@v1
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2
       with:
-        java-version: '11'
+        node-version: '18.x'
         
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Build project
+      run: npm run build
+      
     - name: SonarQube Scan
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip
@@ -30,6 +36,6 @@ jobs:
           -Dsonar.host.url=http://localhost:9000 \
           -Dsonar.login=$SONAR_TOKEN \
           -Dsonar.projectKey=rodniski_devops \
-          -Dsonar.sources=. \
+          -Dsonar.sources=src \
           -Dsonar.language=js \
           -Dsonar.sourceEncoding=UTF-8
