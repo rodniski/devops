@@ -1,7 +1,0 @@
-version: '3'
-
-services:
-  web:
-    image: grcorreia/my-python-app:latest
-    ports:
-      - "5000:5000"

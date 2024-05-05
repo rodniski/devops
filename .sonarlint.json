@@ -1,0 +1,5 @@
+{
+    "sonar.typescript.linting.typescriptVersion": "4.7.4",
+    "sonar.typescript.linting.minimumLevel": "warning"
+  }
+  
