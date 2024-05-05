@@ -30,11 +30,11 @@ jobs:
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         with:
-          # Especifique a URL do servidor SonarQube
-          sonar-host-url: 'http://localhost:9000'
-          # Especifique o token de autenticação
-          sonar-login: ${{ secrets.SONAR_LOGIN }}
-          # Especifique outros parâmetros necessários como projectKey, projectName, sources, etc.
+          projectBaseDir: .
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          # SONAR_SCANNER_OPTS: -X
 
   deploy:
     runs-on: ubuntu-latest
