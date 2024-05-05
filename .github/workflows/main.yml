@@ -17,7 +17,9 @@ jobs:
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: http://192.168.18.10:9000  # Substitua pelo IP do seu servidor SonarQube
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}  # Adicione esta linha com o secret que contém o login do SonarQube
+          SONAR_PASSWORD: ${{ secrets.SONAR_PASSWORD }}  # Adicione esta linha com o secret que contém a senha do SonarQube
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
       # - uses: sonarsource/sonarqube-quality-gate-action@master
