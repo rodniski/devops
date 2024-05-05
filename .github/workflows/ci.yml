@@ -1,0 +1,59 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      # Instalar dependências
+      - name: Install Dependencies
+        run: npm install
+
+      # Construir a aplicação Vite
+      - name: Build Application
+        run: npm run build
+
+      # Executar testes e análise com SonarQube
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          # Especifique a URL do servidor SonarQube
+          sonar-host-url: 'http://localhost:9000'
+          # Especifique o token de autenticação
+          sonar-login: ${{ secrets.SONAR_LOGIN }}
+          # Especifique outros parâmetros necessários como projectKey, projectName, sources, etc.
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      # Instalar dependências
+      - name: Install Dependencies
+        run: npm install
+
+      # Executar a aplicação Vite
+      - name: Run Application
+        run: npm run dev
