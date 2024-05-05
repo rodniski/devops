@@ -54,8 +54,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image
-        run: docker push your-image-name
+        run: docker push devops
 
       - name: Deploy with Docker
         run: |
-          docker run -d --name your-container-name -p 8080:8080 your-image-name
+          docker run -d --name devops-container -p 8080:8080 devops
