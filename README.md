@@ -12,9 +12,11 @@ Trabalho para a matéria de Devops, onde eu:
 ![Actions](image-2.png)
 
 Além disso, ainda contém dentro do projeto o ESLint que por onde eu sei é outra metodologia SAST.
+![ESLINT](image-4.png)
+
 
 O Modelo utilizado é o template do Vite na criação de projeto React e ele está atualmente públicado na Vercel
-![alt text](image-3.png)
+![VITE](image-3.png)
 
 
 Espero que os professores gostem, foi uma matéria bem dificil, mas bem proveitosa.
