@@ -45,4 +45,5 @@ jobs:
           docker build . -t grcorreia/devops:latest
       - name: publish
         run: |
+          docker login -u grcorreia -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker push grcorreia/devops:latest
