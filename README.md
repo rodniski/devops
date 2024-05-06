@@ -1,5 +1,13 @@
 # React + Vite
 
+Trabalho para a matéria de Devops, onde eu:
+- Dockerizei a aplicação,
+- Conectei com o Sonarqube
+- Criei um webhook no discord
+![Docker operando](image.png)
+
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
