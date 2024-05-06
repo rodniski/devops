@@ -47,3 +47,7 @@ jobs:
         run: |
           docker login -u grcorreia -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker push grcorreia/devops:latest
+      - name: Deploy to Vercel
+        run: |
+          npm install -g vercel
+          vercel --prod
